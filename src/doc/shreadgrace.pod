@@ -1,0 +1,106 @@
+=head1 SHReadGRACE
+
+=over 14
+
+=item SHReadGRACE -  
+
+Read spherical harmonic coefficients from a GRACE ASCII file.
+
+=back
+
+=head1 SYNOPSIS
+
+=over 25
+
+=item SUBROUTINE SHReadGRACE ( 
+
+FILENAME, CILM, LMAX, GM, R0_POT, ERROR )
+
+=back
+
+=over 4
+
+=over 22
+
+=item CHARACTER(*)
+
+FILENAME
+
+=item REAL*8	
+
+CILM(2, LMAX+1, LMAX+1), GM, R0_POT
+
+=item INTEGER
+
+LMAX
+
+=item REAL*8, OPTIONAL
+
+ERROR(2, LMAX+1, LMAX+1)
+
+=back
+
+=back
+
+=head1 DESCRIPTION
+
+I<SHReadGRACE> will read spherical harmonic coefficients from a GRACE ASCII formatted file into an array CILM. The errors associated with the coefficients will be read if the optional array ERROR is specified. The maximum spherical harmonic degree is read from the file, and the file does not need to be ordered by angular degree or order.
+
+
+=head1 ARGUMENTS
+
+=over 14
+
+=item FILENAME
+
+(input) CHARACTER(*)
+
+The GRACE ASCII filename containing the spherical harmonic coefficients.
+	
+=item CILM
+
+(output) REAL*8, DIMENSION (2, LMAX+1, LMAX+1)
+
+The spherical harmonic coefficients contained in FILENAME.
+
+=item LMAX
+
+(output) INTEGER
+
+The maximum spherical harmonic degree of CILM.
+
+=item GM
+
+(output) REAL*8
+
+The mass-gravitational constant.
+
+=item R0_POT
+
+(output) REAL*8
+
+The reference radius of the potential coefficients.
+
+=item ERROR
+
+(output) REAL*8, OPTIONAL, DIMENSION (2, LMAX+1, LMAX+1)
+
+The errors corresponding to the spherical harmonic coefficients CILM.
+
+=back
+
+=head1 NOTES
+
+Each line of the file starts with a character string describing what follows. This routine currently recognizes only "RECOEF", which signifies that the line contains real spherical harmonic coefficients. The first time that this string is not "RECOEF", the subroutine will stop reading the file.
+
+=head1 SEE ALSO
+
+shread(1), shreadchamp(1), shreadjpl(1)
+
+L<http://www.ipgp.jussieu.fr/~wieczor/SHTOOLS/SHTOOLS.html>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2005, 2006 by Mark Wieczorek <wieczor@ipgp.fr>.
+
+This is free software; you can distribute and modify it under the terms of the revised BSD license.
