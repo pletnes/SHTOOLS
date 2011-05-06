@@ -21,6 +21,19 @@
 #
 #######################################################################
 
+#############################################
+# This block generates the python interface.
+# Added by Paul Anton Letnes, May 2011
+# This is a work in progress!
+#############################################
+
+python: shtools.so
+
+shtools.so: shtools.pyf *.f95
+	f2py -c shtools.pyf PlmBar.f95 SHTOOLS.f95
+
+#############################################
+
 SHELL=/bin/tcsh
 
 F95 = f95
