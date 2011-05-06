@@ -1,5 +1,10 @@
 
+# shared libraries (compiler-generated)
 *.so
+# python bytecode (generated)
 *.pyc
+# Finder window files on the mac
 .DS_Store
+# vim swap files
+.*.swp
 

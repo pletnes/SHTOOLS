@@ -5,7 +5,6 @@ import shtools
 
 def main():
     lmax = 10
-    num_plm_values = (lmax + 1) * (lmax + 2) / 2
     z = 0.42
     print 'docstring:'
     print shtools.plmbar.__doc__
