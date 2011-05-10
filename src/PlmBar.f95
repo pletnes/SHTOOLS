@@ -59,7 +59,7 @@ subroutine PlmBar(p, lmax, z, csphase, cnorm)
 
 	implicit none
 	integer, intent(in) ::	lmax
-	real*8, intent(out) ::	p((lmax + 1) * (lmax + 2) / 2)
+	real*8, intent(out) ::	p(:)
        	real*8, intent(in) ::	z
        	integer, intent(in), optional :: csphase, cnorm
        	real*8 ::	pmm, rescalem, phase, u, scalef
