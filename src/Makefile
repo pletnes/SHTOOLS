@@ -27,7 +27,14 @@
 # This is a work in progress!
 #############################################
 
-python: shtools.so
+python: pyshtools.so
+
+LIB_LOCATION = /Users/paulanto/usr/local/lib
+GFORTRAN_FLAGS = -fPIC -fbounds-check -ftrapv -fno-automatic -Wall -Wuninitialized -O0 -pedantic -fimplicit-none
+pyshtools.so: pyshtools.f95
+	make all
+	gfortran -c $(GFORTRAN_FLAGS) pyshtools.f95 dsysv.f
+	f2py -c -m pyshtools pyshtools.f95 shtools.o dsysv.f $(OBJS0) $(OBJS1) -L$(LIB_LOCATION) -llapack -lfftw3 --fcompiler=gnu95 -DF2PY_REPORT_ON_ARRAY_COPY=1
 
 shtools.so: shtools.pyf *.f95
 	f2py -c shtools.pyf PlmBar.f95 SHTOOLS.f95
@@ -36,7 +43,8 @@ shtools.so: shtools.pyf *.f95
 
 SHELL=/bin/tcsh
 
-F95 = f95
+#F95 = f95
+F95 = gfortran
 
 ifeq ($(F95),f95)
 	# Default Absoft Pro Fortran flags
@@ -103,7 +111,7 @@ OBJS0 =	CilmPlus.o ComputeD0.o ComputeDG82.o ComputeDm.o DHaj.o djpi2.o \
 	MakeCircleCoord.o SHSjkPG0.o SHReturnTapers.o SHSjkPG.o \
 	PlON.o PlON_d1.o PlmON.o PlmON_d1.o MakeGravGrid2D.o \
 	SHConfidence.o SHMagPowerSpectra.o SHExpandDHC.o MakeGridDHC.o \
-	SHExpandGLQC.o MakeGridGLQC.o SHPowerSpectra.o SHBiasAdmitCorr.o SHCilmToVector.o \
+	SHExpandGLQC.o MakeGridGLQC.o SHBiasAdmitCorr.o SHCilmToVector.o \
 	YilmIndex.o ComputeDMap.o SHReturnTapersMap.o Curve2Mask.o
 	
 SRCS1 = EigValSym.f95 EigValVecSym.f95 EigValVecSymTri.f95 SHExpandLSQ.f95 SHMTDebias.f95  \
@@ -141,13 +149,13 @@ $(PROG): $(OBJS)
 	@rm -f $(PROG)
 #	@$(LIBTOOL) $(LIBTOOLFLAGS) -o $(PROG) $(OBJS)
 #	If you prefer to use libtool, uncomment the above line, and comment the two lines below (AR and RLIB)
-	$(AR) $(ARFLAGS) $(PROG) $(OBJS) 
-	$(RLIB) $(RLIBFLAGS) $(PROG) 
+	-$(AR) $(ARFLAGS) $(PROG) $(OBJS) 
+	-$(RLIB) $(RLIBFLAGS) $(PROG) 
 	@echo
 	@echo Creation of static library successful.
 #	@rm -f $(OBJS)
 #	@mv -f *.mod ../modules/
-	@cp -f *.mod ../modules/
+	-@cp -f *.mod ../modules/
 	@echo Library and module files moved to ../lib and ../modules
 	@echo
 	@echo Archive successfully created

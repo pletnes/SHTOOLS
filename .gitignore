@@ -1,4 +1,6 @@
 
+# Object files (compiler-generated)
+*.o
 # shared libraries (compiler-generated)
 *.so
 # python bytecode (generated)
