@@ -29,12 +29,14 @@
 
 python: pyshtools.so
 
+# Location of fftw3
 LIB_LOCATION = /Users/paulanto/usr/local/lib
-GFORTRAN_FLAGS = -fPIC -fbounds-check -ftrapv -fno-automatic -Wall -Wuninitialized -O0 -pedantic -fimplicit-none
-pyshtools.so: pyshtools.f95
-	make all
-	gfortran -c $(GFORTRAN_FLAGS) pyshtools.f95 dsysv.f
-	f2py -c -m pyshtools pyshtools.f95 shtools.o dsysv.f $(OBJS0) $(OBJS1) -L$(LIB_LOCATION) -llapack -lfftw3 --fcompiler=gnu95 -DF2PY_REPORT_ON_ARRAY_COPY=1
+LIBS = -llapack -lfftw3
+GFORTRAN_FLAGS = -fPIC -fbounds-check -ftrapv -fno-automatic -Wall -Wuninitialized -O0 -pedantic -fimplicit-none -fno-second-underscore
+pyshtools.so: pyshtools.f95 $(PROG)
+	gfortran -c SHTOOLS.f95
+	gfortran -c $(GFORTRAN_FLAGS) pyshtools.f95
+	f2py -c -m pyshtools pyshtools.f95 shtools.o $(PROG) -L$(LIB_LOCATION) $(LIBS) --fcompiler=gnu95 -DF2PY_REPORT_ON_ARRAY_COPY=1 --f90flags='$(GFORTRAN_FLAGS)'
 
 shtools.so: shtools.pyf *.f95
 	f2py -c shtools.pyf PlmBar.f95 SHTOOLS.f95
@@ -153,15 +155,15 @@ $(PROG): $(OBJS)
 	-$(RLIB) $(RLIBFLAGS) $(PROG) 
 	@echo
 	@echo Creation of static library successful.
-#	@rm -f $(OBJS)
-#	@mv -f *.mod ../modules/
+	@rm -f $(OBJS)
+	@mv -f *.mod ../modules/
 	-@cp -f *.mod ../modules/
 	@echo Library and module files moved to ../lib and ../modules
 	@echo
 	@echo Archive successfully created
 
 
-.PHONY: clean
+.PHONY: clean all all2
 
 clean:
 	rm -f $(PROG)
@@ -170,6 +172,7 @@ clean:
 	rm -f $(OBJS2) 
 	rm -f *.mod 
 	rm -f ../modules/*.mod
+	rm -f pyshtools.so pyshtools.o
 
 
 .SUFFIXES: $(SUFFIXES) .f95 

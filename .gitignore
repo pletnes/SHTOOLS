@@ -9,4 +9,8 @@
 .DS_Store
 # vim swap files
 .*.swp
+# f95 module files
+*.mod
+# lib directory (libs are compiler-generated)
+lib
 
