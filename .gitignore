@@ -13,4 +13,6 @@
 *.mod
 # lib directory (libs are compiler-generated)
 lib
+# Virtualenv python
+SHTOOLS-python
 
