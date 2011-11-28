@@ -84,7 +84,6 @@ f90_src_files = ['src/ComputeDG82.f90',
         'src/pyshtools.f90',
         'src/EigValSym2.f90',
         'src/MakeGravGrid2D.f90',
-        'src/PLegendre.f90',
         'src/PlmIndex.f90',
         'src/SHBias.f90',
         'src/SHExpandGLQC.f90',
@@ -120,6 +119,7 @@ f90_src_files = [
         'src/PlmIndex.f90',
         'src/YilmIndex.f90',
         'src/pyshtools.f90',
+        'src/PLegendre.f90',
         ]
 
 def configuration(parent_package='', top_path=None):

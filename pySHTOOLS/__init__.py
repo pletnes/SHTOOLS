@@ -1,3 +1,6 @@
 import SHTOOLS
-from SHTOOLS import plmindex, yilmindex
+plmindex = SHTOOLS.pyshtools.plmindex
+yilmindex = SHTOOLS.pyshtools.yilmindex
+plegendre = SHTOOLS.pyshtools.plegendre
+
 

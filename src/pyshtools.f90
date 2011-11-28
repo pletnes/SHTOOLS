@@ -35,16 +35,16 @@ function YilmIndex(i, l, m)
 end function YilmIndex
 
 !! Legendre functions
-!subroutine PLegendre(p, lmax, z)
-    !!use shtools, only: PLegendre_f => PLegendre
-    !implicit none
-    !integer, intent(in) :: lmax
-    !real(8), intent(out) :: p(lmax + 1)
-    !real(8), intent(in) :: z
-    !!f2py depend(lmax) p
+subroutine PLegendre(p, lmax, z)
+    use shtools, only: PLegendre_f => PLegendre
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out) :: p(lmax + 1)
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p
 
-    !call PLegendre_f(p, lmax, z)
-!end subroutine PLegendre
+    call PLegendre_f(p, lmax, z)
+end subroutine PLegendre
 
 
 !subroutine PlBar(p, lmax, z)
