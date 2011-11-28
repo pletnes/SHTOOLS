@@ -86,10 +86,12 @@ Number of elements in the output arrays.
 
 =head1 SEE ALSO
 
+makeellipsecoord(1)
+
 L<http://www.ipgp.jussieu.fr/~wieczor/SHTOOLS/SHTOOLS.html>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2005, 2006 by Mark Wieczorek <wieczor@ipgp.fr>.
+Copyright 2005-2010 by Mark Wieczorek <wieczor@ipgp.fr>.
 
 This is free software; you can distribute and modify it under the terms of the revised BSD license.

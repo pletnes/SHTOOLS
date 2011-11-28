@@ -26,7 +26,7 @@ MAN2HTML = man2html
 MAN2HTMLFLAGS = -compress -headmap headmapfile -uelem B -topm 0 -bare -pgsize 400 
 #-cgiurl "file:$${title}.$${section}$${subsection}.html"
 POD2MAN = pod2man
-POD2MANFLAGS = -c "SHTOOLS 2.5" -r "SHTOOLS 2.5"
+POD2MANFLAGS = -c "SHTOOLS 2.6" -r "SHTOOLS 2.6"
 DOCDIR = doc
 MANDIR = ../../man/man1
 WWWDIR = ../../www/man
@@ -47,7 +47,7 @@ PODFILES = cilmplus.pod computed0.pod computedg82.pod computedm.pod \
 	wl.pod wl_curv.pod shmultitapercse.pod shmultitaperse.pod shpowerl.pod \
 	shpowerdensityl.pod shcrosspowerdensityl.pod shpowerspectrum.pod \
 	shpowerspectrumdensity.pod shcrosspowerspectrum.pod shcrosspowerspectrumdensity.pod \
-	shcrosspowerl.pod shread.pod shreadjpl.pod shreadchamp.pod shreadgrace.pod \
+	shcrosspowerl.pod shread.pod shreadjpl.pod shread2.pod \
 	shreturntapers.pod shreturntapersm.pod shrotatecoef.pod shrotaterealcoef.pod \
 	wigner3j.pod shsjkpg.pod shsjkpg0.pod shtools.pod sphericalcapcoef.pod shmtdebias.pod \
 	makegravgrid2d.pod shconfidence.pod shmagpowerl.pod shmagpowerspectrum.pod \
@@ -55,7 +55,7 @@ PODFILES = cilmplus.pod computed0.pod computedg82.pod computedm.pod \
 	shpowerdensitylc.pod shcrosspowerdensitylc.pod shpowerspectrumc.pod \
 	shpowerspectrumdensityc.pod shcrosspowerspectrumc.pod shcrosspowerspectrumdensityc.pod \
 	shcrosspowerlc.pod shbiasadmitcorr.pod shcilmtovector.pod shvectortocilm.pod \
-	yilmindex.pod computedmap.pod shreturntapers.pod curve2mask.pod
+	yilmindex.pod computedmap.pod shreturntapers.pod curve2mask.pod makeellipsecoord.pod
 
 MANFILES = cilmplus.1 computed0.1 computedg82.1 computedm.1 \
 	dhaj.1 djpi2.1 eigvalsym.1 eigvalvecsym.1 eigvalvecsymtri.1 hilm.1 \
@@ -70,14 +70,14 @@ MANFILES = cilmplus.1 computed0.1 computedg82.1 computedm.1 \
 	shlocalizedadmitcorr.1 shmtvaropt.1 shmtvaropt0.1 shmultiply.1 wl.1 wlcurv.1 \
 	shmultitapercse.1 shmultitaperse.1 shpowerl.1 shpowerdensityl.1 shcrosspowerdensityl.1 \
 	shpowerspectrum.1 shpowerspectrumdensity.1 shcrosspowerspectrum.1 \
-	shcrosspowerspectrumdensity.1 shcrosspowerl.1 shread.1 shreadjpl.1 shreadchamp.1 \
-	shreadgrace.1 shreturntapers.1 shreturntapersm.1 shrotatecoef.1 shrotaterealcoef.1 \
+	shcrosspowerspectrumdensity.1 shcrosspowerl.1 shread.1 shreadjpl.1 shread2.1 \
+	shreturntapers.1 shreturntapersm.1 shrotatecoef.1 shrotaterealcoef.1 \
 	wigner3j.1 shsjkpg.1 shsjkpg0.1 shtools.1 sphericalcapcoef.1 shmtdebias.1 makegravgrid2d.1 \
 	shconfidence.1 shmagpowerl.1 shmagpowerspectrum.1 makegriddhc.1 shexpanddhc.1 \
 	makegridglqc.1 shexpandglqc.1 shpowerlc.1 shpowerdensitylc.1 shcrosspowerdensitylc.1 \
 	shpowerspectrumc.1 shpowerspectrumdensityc.1 shcrosspowerspectrumc.1 shcrosspowerspectrumdensityc.1 \
 	shcrosspowerlc.1 shbiasadmitcorr.1 shcilmtovector.1 shvectortocilm.1 yilmindex.1 \
-	computedmap.1 shreturntapersmap.1 curve2mask.1
+	computedmap.1 shreturntapersmap.1 curve2mask.1 makeellipsecoord.1
 
 HTMLFILES_modules = planetsconstants.html shtools.html
 
@@ -92,7 +92,7 @@ HTMLFILES_transformations = dhaj.html  makegrid2d.html glqgridcoord.html \
 	shexpanddhc.html makegriddhc.html makegridglqc.html shexpandglqc.html \
 	preglq.html nglq.html nglqsh.html nglqshn.html
 
-HTMLFILES_io = shread.html shreadjpl.html shreadchamp.html shreadgrace.html \
+HTMLFILES_io = shread.html shreadjpl.html shread2.html \
  	shrtoc.html shctor.html shcilmtocindex.html shcindextocilm.html \
  	shcilmtovector.html shvectortocilm.html yilmindex.html
 	
@@ -118,7 +118,7 @@ HTMLFILES_gravmag = cilmplus.html hilm.html makegeoidgrid.html \
 
 HTMLFILES_other =  eigvalsym.html eigvalvecsym.html eigvalvecsymtri.html \
 	 makecirclecoord.html randomn.html randomgaussian.html import_wisdom_from_file.html \
-	 export_wisdom_to_file.html wigner3j.html
+	 export_wisdom_to_file.html wigner3j.html makeellipsecoord.html
  
 
 all: install-man install-html move

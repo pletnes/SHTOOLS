@@ -19,7 +19,7 @@
 	<table class="menu">
 		<tbody>
 			<tr>
-				<td><a href="http://www.ipgp.fr/~wieczor/SHTOOLS/SHTOOLS.html">HOME</a></td>
+				<td><a href="http://www.ipgp.jussieu.fr/~wieczor/SHTOOLS/SHTOOLS.html">HOME</a></td>
 				<td><a href="../download.html">DOWNLOAD</a></td>
 				<td class="selected"><a href="../documentation.html">DOCUMENTATION</a></td>
 				<td><a href="http://groups.google.com/group/SHTOOLS">FORUM</a></td>
@@ -32,7 +32,7 @@
 >  <a href="../../SHTOOLS.html" class="dir">Home</a> > <a href="../documentation.html" class="dir">Documentation</a> > <a href="../modules.html" class="dir">Modules</a></p>
 <PRE>
 <!-- Manpage converted by man2html 3.0.1 -->
-<B>PLANETSCONSTANTS(1)</B>               SHTOOLS 2.5              <B>PLANETSCONSTANTS(1)</B>
+<B>PLANETSCONSTANTS(1)</B>               SHTOOLS 2.6              <B>PLANETSCONSTANTS(1)</B>
 
 
 </PRE>
@@ -83,6 +83,14 @@
 
        Omega_Moon        Angular rotation rate of the Moon.
 
+       C_MOI             Polar moment of inertia, using R=1738 km.
+
+       I_MOI             Average moment of inertia, using R=1738 km.
+
+       Gamma_MOI         Gamma = (B-A)/C.
+
+       Beta_MOI          Beta = (C-A)/B.
+
        <B>Mars</B>
 
        R_Mars            Average radius of Mars
@@ -101,6 +109,10 @@
 
        Omega_Mars        Angular rotation rate of Mars.
 
+       f_Mars            Topographic flattening of Mars.
+
+       a_Mars            Mean equatorial radius of Mars.
+
        <B>Venus</B>
 
        R_Venus           Average radius of Venus.
@@ -114,6 +126,11 @@
 
        Omega_Venus       Angular rotation rate of Venus.
 
+       rho_bar_Venus     Average density of Venus.
+
+       g0_Venus          Gravitational acceleration at R_Mars, not including
+                         rotation.
+
        <B>Earth</B>
 
        GM_Earth          Gravitational constant times the mass of the Earth.
@@ -126,6 +143,8 @@
        WGS84_a           The semi-major axis of the WGS84 ellipsoid.
 
        WGS84_b           The semi-minor axis of the WGS84 ellipsoid.
+
+       WGS84_r3          The radius of a sphere of Earth's volume.
 
        WGS84_f           The flattening of the WGS84 ellipsoid.
 
@@ -142,20 +161,39 @@
                          The theoretical normal potential associated with the
                          WGS84 model.
 
+       <B>Mercury</B>
+
+       R_Mercury         Average radius of Mercury.
+
+       GM_Mercury        Gravitational constant times the mass of the Mercury.
+
+       Mass_Mercury      Mass of Mercury.
+
+       Omega_Mercury_orbit
+                         Angular rotation rate of Mercury about the Sun.
+
+       Omega_Mercury_spin
+                         Angular rotation rate of Mercury.
+
+       rho_bar_Mercury   Average density of Mercury.
+
+       g0_Mercury        Gravitational acceleration at R_Mercury, not
+                         including rotation.
+
 
 </PRE>
 <H2 class="man">SEE ALSO</H2 class="man"><PRE>
-       &lt;http://www.ipgp.fr/~wieczor/SHTOOLS/SHTOOLS.html&gt;
+       &lt;http://www.ipgp.jussieu.fr/~wieczor/SHTOOLS/SHTOOLS.html&gt;
 
 
 </PRE>
 <H2 class="man">COPYRIGHT AND LICENSE</H2 class="man"><PRE>
-       Copyright 2005-2009 by Mark Wieczorek &lt;wieczor@ipgp.fr&gt;.
+       Copyright 2005-2011 by Mark Wieczorek &lt;wieczor@ipgp.fr&gt;.
 
        This is free software; you can distribute and modify it under the terms
        of the revised BSD license.
 
-SHTOOLS 2.5                       2009-08-18               <B>PLANETSCONSTANTS(1)</B>
+SHTOOLS 2.6                       2011-11-21               <B>PLANETSCONSTANTS(1)</B>
 </PRE>
 
 	<p class="dir">
@@ -165,8 +203,8 @@ SHTOOLS 2.5                       2009-08-18               <B>PLANETSCONSTANTS(1
 	<tbody>
 		<tr>
 			<td class="c1"><a href="http://www.cnrs.fr/">Centre National de la Recherche Scientifique</a></td>
-			<td class="c2"><a href="http://www.ipgp.fr/">Institut de Physique du Globe de Paris</a></td>
-			<td class="c3">&copy; 2009 <a href="http://www.ipgp.fr/~wieczor">Mark Wieczorek</a></td>
+			<td class="c2"><a href="http://www.ipgp.jussieu.fr/">Institut de Physique du Globe de Paris</a></td>
+			<td class="c3">&copy; 2011 <a href="http://www.ipgp.jussieu.fr/~wieczor">Mark Wieczorek</a></td>
 		</tr>
 	</tbody>
 	</table>

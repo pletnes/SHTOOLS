@@ -23,7 +23,7 @@ program MakeMag
 	implicit none
 	integer, parameter ::	maxdeg = 100, gridmax = 1
 	character*80 ::		infile, radf, thetaf, phif, totalf
-	real*8 ::		cilm(2,maxdeg+1, maxdeg+1), header(4), interval, r0, r, &
+	real*8 ::		glm(2,maxdeg+1, maxdeg+1), header(4), interval, r0, r, &
 				rad(181*gridmax, 361*gridmax), phi(181*gridmax, 361*gridmax), &
 				theta(181*gridmax, 361*gridmax), total(181*gridmax, 361*gridmax), &
 				f, mpr, z, timein, timeout
@@ -36,7 +36,7 @@ program MakeMag
 	
 	infile = "../ExampleDataFiles/FSU_mars90.sh"
 	
-	call SHRead(infile, cilm, lmax, header=header(1:4), skip=1)
+	call SHRead(infile, glm, lmax, header=header(1:4), skip=1)
 	r0 = header(1)*1.d3
 	print*, "R0 (km) = ", r0/1.d3
 	print*, "Lmax of file = ", lmax
@@ -64,11 +64,13 @@ program MakeMag
 	
 	call cpu_time(timein)
 	
-	call MakeMagGrid2D(rad, phi, theta, total, cilm, r0, r, f, lmax, interval, nlat, nlong)
+	call MakeMagGrid2D(rad, phi, theta, total, glm, r0, r, f, lmax, interval, nlat, nlong)
 	
 	call cpu_time(timeout)
 	
 	print*, "Elapsed time (sec) = ", timeout-timein
+	
+	print*, "Maximum and minimum intensity (nT) = ", maxval(total(1:nlat,1:nlong)), minval(total(1:nlat,1:nlong))
 	
 	print*, nlat, nlong
 	

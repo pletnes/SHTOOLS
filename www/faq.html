@@ -123,12 +123,12 @@
 	
 	<h2><A name="g10"></a>How do I make images with the output from SHTOOLS?</h2>
 	
-	<p>The output from SHTOOLS is typically in the form of an ASCII raster file. Any standard software, such as MATLAB, should be able to read these files, though you will probably have to specify the number of rows and columns. Personally, I use the free unix-based software <a href="http://gmt.soest.hawaii.edu/">GMT</a>, and frequently make use of the Molleweide projection.</p>
+	<p>The output from SHTOOLS is typically in the form of an ASCII raster file. Any standard software, such as MATLAB, should be able to read these files, though you will probably have to specify the number of rows and columns. An alternative is to use the free unix-based software <a href="http://gmt.soest.hawaii.edu/">GMT</a>.</p>
 	
 	
 	<h2><a name="c1"></a>SHTOOLS won't compile on my computer.</h2>
 	
-	<p>If the command <tt>make all</tt> (or <tt>make all2</tt>) results in compilation errors</p>
+	<p>If the command <tt>make all</tt> (or <tt>make all2</tt> or <tt>make all3</tt>) results in compilation errors</p>
 	
 	<ol>
 		<li> Verify that you have the latest release of SHTOOLS.</li>
@@ -174,6 +174,13 @@
 	</blockquote>
 
 	<p>This will compile an alterative set of source files that explictly appends underscores to the LAPACK subroutine names. These alternative files have "2" appended to their names in the directory <tt>src</tt>. If you get similar link errors, but with an added underscore, this probably means that the linker can't find the LAPACK libarary. See also <a href="#l4">How do I know if I need to append underscores to external function and subroutine names?</a></p>
+	
+	<p>If a similar problem is arising with the FFTW libraries, use</p>
+	
+	<blockquote class="small"><p><tt>
+		make clean<br>
+		make all3</tt></p>
+	</blockquote>
 	
 	<h2><a name="l2"></a>Linking fails because e_wsfe, z_abs, c_sqrt, s_cmp, etc., are undefined.</h2>
 	
@@ -267,7 +274,7 @@
 	_dfftw_plan_dft_r2c_1d</tt></p>
 	 </blockquote>
 
-	<p>indicating that it is not necessary to append trailing underscores to the FFTW routine names. The discrepancy between the FFTW and LAPACK libraries on my machine makes it somewhat more difficult to link to both simultaneously, and it is for this reason that two different makes are possible: <tt>make all</tt> and <tt>make all2</tt>. The first uses source code where the external function names do not contain underscores, whereas the other uses source code where there are trailing underscores appended <span class="underline">only</span> to the LAPACK subroutine names. Ideally, I should make a configuration file that will determine which cases are present on an arbitrary machine, but I don't know how to do this yet.</p> 
+	<p>indicating that it is not necessary to append trailing underscores to the FFTW routine names. The discrepancy between the FFTW and LAPACK libraries on my machine makes it somewhat more difficult to link to both simultaneously, and it is for this reason that three different makes are possible: <tt>make all</tt>, <tt>make all2</tt> and <tt>make all3</tt>. The first uses source code where the external function names do not contain underscores, the second uses source code where trailing underscores are appended only to the LAPACK subroutine names, and the third uses source code where trailing underscores are appended only to the FFTW subroutine names.</p> 
 
 	<h2><a name="l5"></a>Linking fails because SHTOOLS routines are undefined.</h2>
 	
@@ -336,7 +343,7 @@
 		<tr>
 			<td class="c1"><a href="http://www.cnrs.fr/">Centre National de la Recherche Scientifique</a></td>
 			<td class="c2"><a href="http://www.ipgp.fr/">Institut de Physique du Globe de Paris</a></td>
-			<td class="c3">&copy; 2009 <a href="http://www.ipgp.fr/~wieczor">Mark Wieczorek</a></td>
+			<td class="c3">&copy; 2011 <a href="http://www.ipgp.fr/~wieczor">Mark Wieczorek</a></td>
 		</tr>
 	</tbody>
 	</table>

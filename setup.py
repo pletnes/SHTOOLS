@@ -1,29 +1,147 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+import glob
+from numpy.distutils.core import setup
+
+f90_src_files = ['src/ComputeDG82.f90', 
+        'src/EigValVecSym2.f90',
+        'src/MakeGridDH2.f90',
+        'src/MakeGridGLQ2.f90',
+        'src/PreCompute2.f90',
+        'src/SHExpandDH2.f90',
+        'src/SHExpandGLQ2.f90',
+        'src/SHExpandLSQ2.f90',
+        'src/SHMTVarOpt02.f90',
+        'src/SHRead2.f90',
+        'src/EigValSym2.f90',
+        'src/EigValVecSymTri2.f90',
+        'src/MakeGridDHC2.f90',
+        'src/MakeGridGLQC2.f90',
+        'src/ReadWisdom2.f90',
+        'src/SHExpandDHC2.f90',
+        'src/SHExpandGLQC2.f90',
+        'src/SHMTDebias2.f90',
+        'src/SHMTVarOpt2.f90',
+        'src/djpi2.f90',
+        'src/CilmPlus.f90',
+        'src/PlBar_d1.f90',
+        'src/PlmSchmidt_d1.f90',
+        'src/SHConfidence.f90',
+        'src/SHFindLWin.f90',
+        'src/SHPowerSpectra.f90',
+        'src/SHSjkPG.f90',
+        'src/ComputeD0.f90',
+        'src/FFTW3.f90',
+        'src/PlON.f90',
+        'src/SHConvertCoef.f90',
+        'src/SHLocalizedAdmitCorr.f90',
+        'src/SHPowerSpectraC.f90',
+        'src/SHSjkPG0.f90',
+        'src/ComputeDG82.f90',
+        'src/GLQGridCoord.f90',
+        'src/PlON_d1.f90',
+        'src/PreCompute2.f90',
+        'src/SHTOOLS.f90',
+        'src/ComputeDMap.f90',
+        'src/Hilm.f90',
+        'src/MakeGridGLQ2.f90',
+        'src/PlSchmidt.f90',
+        'src/PreGLQ.f90',
+        'src/SHExpandDH2.f90',
+        'src/SHMTDebias2.f90',
+        'src/SHRead2.f90',
+        'src/SphericalCapCoef.f90',
+        'src/ComputeDm.f90',
+        'src/HilmGLQ.f90',
+        'src/PlSchmidt_d1.f90',
+        'src/Random.f90',
+        'src/SHReadCHAMP.f90',
+        'src/Wigner3j.f90',
+        'src/Curve2Mask.f90',
+        'src/MakeCircleCoord.f90',
+        'src/MakeGridGLQC2.f90',
+        'src/PlanetsConstants.f90',
+        'src/SHExpandDHC2.f90',
+        'src/SHMTVarOpt0.f90',
+        'src/SHReadGRACE.f90',
+        'src/YilmIndex.f90',
+        'src/DHaj.f90',
+        'src/MakeEllipseCoord.f90',
+        'src/MakeGridPoint.f90',
+        'src/PlmBar.f90',
+        'src/ReadWisdom2.f90',
+        'src/SHMTVarOpt02.f90',
+        'src/SHReadJPL.f90',
+        'src/djpi2.f90',
+        'src/EigValSym.f90',
+        'src/MakeGeoidGrid.f90',
+        'src/MakeMagGrid2D.f90',
+        'src/PlmBar_d1.f90',
+        'src/SHAdmitCorr.f90',
+        'src/SHExpandGLQ2.f90',
+        'src/SHMTVarOpt2.f90',
+        'src/SHReturnTapers.f90',
+        'src/pyshtools.f90',
+        'src/EigValSym2.f90',
+        'src/MakeGravGrid2D.f90',
+        'src/PLegendre.f90',
+        'src/PlmIndex.f90',
+        'src/SHBias.f90',
+        'src/SHExpandGLQC.f90',
+        'src/SHMagPowerSpectra.f90',
+        'src/SHReturnTapersM.f90',
+        'src/wl.f90',
+        'src/EigValVecSym.f90',
+        'src/MakeGrid2D.f90',
+        'src/PLegendreA.f90',
+        'src/PlmON.f90',
+        'src/SHBiasAdmitCorr.f90',
+        'src/SHExpandGLQC2.f90',
+        'src/SHMultiTaperCSE.f90',
+        'src/SHReturnTapersMap.f90',
+        'src/EigValVecSym2.f90',
+        'src/MakeGridDH.f90',
+        'src/PLegendreA_d1.f90',
+        'src/PlmON_d1.f90',
+        'src/SHBiasK.f90',
+        'src/SHMultiTaperSE.f90',
+        'src/SHRotateCoef.f90',
+        'src/EigValVecSymTri.f90',
+        'src/MakeGridDH2.f90',
+        'src/PlBar.f90',
+        'src/PlmSchmidt.f90',
+        'src/SHCilmToVector.f90',
+        'src/SHExpandLSQ2.f90',
+        'src/SHMultiply.f90',
+        'src/SHRotateRealCoef.f90',
+        ]
+f90_src_files = [
+        'src/SHTOOLS.f90',
+        'src/PlmIndex.f90',
+        'src/YilmIndex.f90',
+        'src/pyshtools.f90',
+        ]
 
 def configuration(parent_package='', top_path=None):
     from numpy.distutils.misc_util import Configuration
-    config = Configuration('f2py_f90_ext',parent_package,top_path)
+    config = Configuration(package_name='pySHTOOLS',
+            parent_name=parent_package,
+            top_path=top_path)
     config.add_extension('SHTOOLS',
-                         ['src/pyshtools.f90'],
-                         include_dirs=['include'],
-                         f2py_options=['--include_paths',
-                                       config.paths('include')[0]]
-                         )
-    config.add_data_dir('tests')
+            sources=f90_src_files)
     return config
 
-name = 'pySHTOOLS'
-setup(name=name,
-        version='3.beta',
-        description='Python interface to the SHTOOLS package',
-        author='Paul Anton Letnes',
-        author_email='paul.anton.letnes@gmail.com',
-        url='https://github.com/Dynetrekk/SHTOOLS'
-        packages=[name, ],
-    )
+def main():
+    name = 'pySHTOOLS'
+    setup(description='Python interface to the SHTOOLS package',
+            version='2.7.b1',
+            author='Paul Anton Letnes',
+            author_email='paul.anton.letnes@gmail.com',
+            url='https://github.com/Dynetrekk/SHTOOLS',
+            packages=[name, ],
+            **configuration(top_path='').todict())
 
-
+if __name__ == "__main__":
+    main()
 
 

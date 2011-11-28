@@ -129,7 +129,7 @@ The results of this routine have been verified against the same routine run in q
 
 Many times (maybe always), the large relative errors occur when the 3j coefficient changes sign and is very close to zero (i.e., adjacent values are about 1.e7 times greater in magnitude). Thus, if one does not need to know highly accurate values of the 3j coefficients when they are almost zero (i.e., ~1.e-10) then this routine is probably usable up to about 160.
 
-These results have also been verified for parameter values less than 100 using a code based on the algorith of de Blanc (1987), which was originally coded by Olav van Genabeek, and modified by M. Fang. (This code was run in quadruple precision and only calculates one coefficient for each call. I also have no idea if this code was ever verified.) Maximum relative errors between the two routines were less than 1.d-8 for a large number of values (again, only 3j coefficients greater than 1.d-17 were considered here).
+These results have also been verified for parameter values less than 100 using a code based on the algorith of de Blanc (1987), which was originally coded by Olav van Genabeek, and modified by M. Fang. (This code was run in quadruple precision and only calculates one coefficient for each call.) Maximum relative errors between the two routines were less than 1.d-8 for a large number of values (again, only 3j coefficients greater than 1.d-17 were considered here).
 
 =head1 SEE ALSO
 
@@ -145,6 +145,6 @@ and 6j-coefficients for quantum-mechanical coupling of angular momenta, I<J. Mat
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2005, 2006 by Mark Wieczorek <wieczor@ipgp.fr>.
+Copyright 2005-2009 by Mark Wieczorek <wieczor@ipgp.fr>.
 
 This is free software; you can distribute and modify it under the terms of the revised BSD license.

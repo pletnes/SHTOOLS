@@ -97,7 +97,7 @@ If 1 (default) the input grid is equally sampled (N by N). If 2, the grid is equ
 
 (input) INTEGER, OPTIONAL
 
-The maximum spherical harmonic degree used in evaluating the function.
+The maximum spherical harmonic degree used in evaluating the function. This must be less than or equal to LMAX.
 
 =back
 

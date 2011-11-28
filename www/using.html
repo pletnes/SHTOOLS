@@ -63,7 +63,7 @@ As an example of compiling and linking a program "MyProgram.f95" to the necessar
 
 	<blockquote class="small">
 		<p><tt>f95 -p $SHTOOLSMODPATH -L$SHTOOLSLIBPATH <i>-YEXT_NAMES=LCS -YEXT_SFX=_</i><br>
-		-lSHTOOLS2.5 -lfftw3 -lm -llapack -lblas -O3 MyProgram.f95 <br>
+		-lSHTOOLS2.6 -lfftw3 -lm -llapack -lblas -O3 MyProgram.f95 <br>
 		-o MyProgram</tt></p>
 	</blockquote>
 	
@@ -71,15 +71,22 @@ As an example of compiling and linking a program "MyProgram.f95" to the necessar
 
 	<blockquote class="small">
 		<p><tt>g95 -I$SHTOOLSMODPATH -L$SHTOOLSLIBPATH <i>-fno-second-underscore </i><br>
-		-lSHTOOLS2.5 -lfftw3 -lm -llapack -lblas -O3 MyProgram.f95 <br>
+		-lSHTOOLS2.6 -lfftw3 -lm -llapack -lblas -O3 MyProgram.f95 <br>
 		-o MyProgram</tt></p>
 	</blockquote>
 	
 	<h3>gfortran</h3>
 
 	<blockquote class="small">
-		<p><tt>gfortran -J$SHTOOLSMODPATH -L$SHTOOLSLIBPATH -lSHTOOLS2.5<br>
+		<p><tt>gfortran -J$SHTOOLSMODPATH -L$SHTOOLSLIBPATH -lSHTOOLS2.6<br>
 		-lfftw3 -lm -llapack -lblas -O3 MyProgram.f95 -o MyProgram</tt></p>
+	</blockquote>
+	
+	<h3>Intel Fortran <tt>ifort</tt></h3>
+
+	<blockquote class="small">
+		<p><tt>ifort -free -I$SHTOOLSMODPATH -L$SHTOOLSLIBPATH -lSHTOOLS2.6<br>
+		-lfftw3 -lm -llapack -lblas -O3 -Tf MyProgram.f95 -o MyProgram</tt></p>
 	</blockquote>
 
 	<p>It may be necessary to modify the fortran compiler options in italics in order to link to the LAPACK and FFTW libraries, see the <a href="compilation.html">Compilation Instructions</a> for more details. If the library <tt>ATLAS</tt> exists on your system, this could be used instead of <tt>BLAS</tt>.</p>
@@ -115,7 +122,7 @@ As an example of compiling and linking a program "MyProgram.f95" to the necessar
 		<tr>
 			<td class="c1"><a href="http://www.cnrs.fr/">Centre National de la Recherche Scientifique</a></td>
 			<td class="c2"><a href="http://www.ipgp.fr/">Institut de Physique du Globe de Paris</a></td>
-			<td class="c3">&copy; 2009 <a href="http://www.ipgp.fr/~wieczor">Mark Wieczorek</a></td>
+			<td class="c3">&copy; 2011 <a href="http://www.ipgp.fr/~wieczor">Mark Wieczorek</a></td>
 		</tr>
 	</tbody>
 	</table>

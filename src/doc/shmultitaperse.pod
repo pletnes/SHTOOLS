@@ -110,13 +110,13 @@ The Euler rotation angles used in rotating the windowing functions. ALPHA(1 ) = 
 
 =item LAT
 
-(input) REAL*8
+(input) REAL*8, OPTIONAL
 
 The latitude in DEGREES of the localized analysis. Either ALPHA or LAT and LON can be specified but not both. If none of these are specified, the window functions will not be rotated, and the spectral analysis will be centered at the north pole.
 
 =item LON
 
-(input) REAL*8
+(input) REAL*8, OPTIONAL
 
 The longitude in DEGREES of the localized analysis. Either ALPHA or LAT and LON can be specified, but not both. If none of these are specified, the window functions will not be rotated, and the spectral analysis will be centered at the north pole.
 

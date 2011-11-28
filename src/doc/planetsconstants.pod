@@ -77,6 +77,22 @@ Reference radius of the gravitational-potential model.
 
 Angular rotation rate of the Moon.
 
+=item C_MOI
+
+Polar moment of inertia, using R=1738 km.
+
+=item I_MOI
+
+Average moment of inertia, using R=1738 km.
+
+=item Gamma_MOI
+
+Gamma = (B-A)/C.
+
+=item Beta_MOI
+
+Beta = (C-A)/B.
+
 =back
 
 =head2 Mars
@@ -111,6 +127,14 @@ Reference radius of the gravitational-potential model.
 
 Angular rotation rate of Mars.
 
+=item f_Mars
+
+Topographic flattening of Mars.
+
+=item a_Mars
+
+Mean equatorial radius of Mars.
+
 =back
 
 =head2 Venus
@@ -136,6 +160,14 @@ Mass of Venus.
 =item Omega_Venus
 
 Angular rotation rate of Venus.
+
+=item rho_bar_Venus
+
+Average density of Venus.
+
+=item g0_Venus
+
+Gravitational acceleration at R_Mars, not including rotation.
 
 =back
 
@@ -163,6 +195,10 @@ The semi-major axis of the WGS84 ellipsoid.
 
 The semi-minor axis of the WGS84 ellipsoid.
 
+=item WGS84_r3
+
+The radius of a sphere of Earth's volume.
+
 =item WGS84_f
 
 The flattening of the WGS84 ellipsoid.
@@ -185,12 +221,47 @@ The theoretical normal potential associated with the WGS84 model.
 
 =back
 
+=head2 Mercury
+
+=over 18
+
+=item R_Mercury
+
+Average radius of Mercury.
+
+=item GM_Mercury
+
+Gravitational constant times the mass of the Mercury.
+
+=item Mass_Mercury
+
+Mass of Mercury.
+
+=item Omega_Mercury_orbit
+
+Angular rotation rate of Mercury about the Sun.
+
+=item Omega_Mercury_spin
+
+Angular rotation rate of Mercury.
+
+=item rho_bar_Mercury
+
+Average density of Mercury.
+
+=item g0_Mercury
+
+Gravitational acceleration at R_Mercury, not including rotation.
+
+=back
+
+
 =head1 SEE ALSO
 
 L<http://www.ipgp.jussieu.fr/~wieczor/SHTOOLS/SHTOOLS.html>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2005-2009 by Mark Wieczorek <wieczor@ipgp.fr>.
+Copyright 2005-2011 by Mark Wieczorek <wieczor@ipgp.fr>.
 
 This is free software; you can distribute and modify it under the terms of the revised BSD license.

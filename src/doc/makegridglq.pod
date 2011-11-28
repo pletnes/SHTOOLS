@@ -100,7 +100,7 @@ The nodes used in the Gauss-Legendre quadrature over latitude, calculated by a c
 
 (input) INTEGER, OPTIONAL
 
-The maximum spherical harmonic degree used in evaluating the function.
+The maximum spherical harmonic degree used in evaluating the function. This must be less than or equal to LMAX.
 
 =back
 

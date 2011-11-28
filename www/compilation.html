@@ -63,7 +63,9 @@
 	
 	<p>One should always use some form of optimization when compiling SHTOOLS, such as by specifying the option <tt>-O3</tt> or <tt>-O2</tt>.</p>
 	
-	<p>The biggest difficulty in compiling SHTOOLS is setting the compiler flags so that the external subroutine names are in a format that is compatible with the FFTW and LAPACK libraries. In general, it is necessary to ensure that the SHTOOLS subroutine names are in lower case and have the right number of underscores appended to them. For Absoft ProFortran, it will most likely be necessary to use both</p>
+	<p>The biggest difficulty in compiling SHTOOLS is setting the compiler flags so that the external subroutine names are in a format that is compatible with the FFTW and LAPACK libraries. In general, it is necessary to ensure that the SHTOOLS subroutine names are in lower case and have the right number of underscores appended to them.</p>
+	
+	<p>For Absoft ProFortran, it will most likely be necessary to use both</p>
 
 	<blockquote class="small">
 		<p><tt>-YEXT_NAMES=LCS</tt></p>
@@ -87,7 +89,7 @@
 		<p><tt>-fno-underscoring</tt></p>
 	</blockquote>
 	
-	<p>It is generally not necessary to use any special flags for <tt>gfortran</tt>, though it could arise that either </p>
+	<p>For <tt>gfortran</tt>, it is generally not necessary to use any special flags, though it could arise that either </p>
 	
 	<blockquote class="small">
 		<p><tt>-fno-underscoring</tt></p>
@@ -100,14 +102,28 @@
 	</blockquote>
 	
 	<p>might be necessary.</p>
+	
+	<p>For the Intel Fortran compiler <tt>ifort</tt>, it will be necessary to use</p>
 
-	<p>Setting the right compiler flags is more complicated when the FFTW and LAPACK libraries have different naming conventions. In order to accommodate this case, underscores have been explicitly added to the end of the LAPACK subroutine names in an alternative set of source files. In order to compile SHTOOLS using this alternative set of source files, use</p>
+	<blockquote class="small">
+		<p><tt>-free -Tf</tt></p>
+	</blockquote>
+	
+	<p>in order that the compiler recognizes files with the extension .f95 as fortran 95 files. In this case, the compiled file name should come directly after the option <tt>-Tf</tt>.</p>
+
+	<p>Setting the right compiler flags is more complicated when the FFTW and LAPACK libraries have different naming conventions. In order to accommodate this case, underscores have been explicitly added to LAPACK and FFTW subroutine names in an alternative set of source files. In order to compile SHTOOLS with underscores explicitly appended to LAPACK routine names, use</p>
 
 	<blockquote class="small">
 		<p><tt>make all2</tt></p>
 	</blockquote>
 
-	<p>See the <a href="faq.html">FAQ</a> for further information.</p>
+	<p>In order to compile SHTOOLS with underscores explicitly appended to FFTW routine names, use</p>
+	
+	<blockquote class="small">
+		<p><tt>make all3</tt></p>
+	</blockquote>
+	
+	<p>For both cases, compiler flags should be set so that underscores are not appended to routine names. See the <a href="faq.html">FAQ</a> for further information.</p>
 	
 	<p>To generate 64 bit code, use the compiler option</p>
 	
@@ -126,7 +142,7 @@
 		<tr>
 			<td class="c1"><a href="http://www.cnrs.fr/">Centre National de la Recherche Scientifique</a></td>
 			<td class="c2"><a href="http://www.ipgp.fr/">Institut de Physique du Globe de Paris</a></td>
-			<td class="c3">&copy; 2009 <a href="http://www.ipgp.fr/~wieczor">Mark Wieczorek</a></td>
+			<td class="c3">&copy; 2011 <a href="http://www.ipgp.fr/~wieczor">Mark Wieczorek</a></td>
 		</tr>
 	</tbody>
 	</table>
