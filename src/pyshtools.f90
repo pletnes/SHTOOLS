@@ -47,81 +47,81 @@ subroutine PLegendre(p, lmax, z)
 end subroutine PLegendre
 
 
-!subroutine PlBar(p, lmax, z)
-    !!use shtools, only: PlBar_f => PlBar
-    !implicit none
-    !integer, intent(in) :: lmax
-    !real(8), intent(out) :: p(lmax + 1)
-    !real(8), intent(in) :: z
-    !!f2py depend(lmax) p
+subroutine PlBar(p, lmax, z)
+    use shtools, only: PlBar_f => PlBar
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out) :: p(lmax + 1)
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p
 
-    !call PlBar_f(p, lmax, z)
-!end subroutine PlBar
+    call PlBar_f(p, lmax, z)
+end subroutine PlBar
 
-!subroutine PlSchmidt(p, lmax, z)
-    !!use shtools, only: PlSchmidt_f => PlSchmidt
-    !implicit none
-    !integer, intent(in) :: lmax
-    !real(8), intent(out) :: p(lmax + 1)
-    !real(8), intent(in) :: z
-    !!f2py depend(lmax) p
+subroutine PlSchmidt(p, lmax, z)
+    use shtools, only: PlSchmidt_f => PlSchmidt
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out) :: p(lmax + 1)
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p
     
-    !call PlSchmidt_f(p, lmax, z)
-!end subroutine PlSchmidt
+    call PlSchmidt_f(p, lmax, z)
+end subroutine PlSchmidt
 
-!subroutine PlON(p, lmax, z)
-    !!use shtools, only: PlON_f => PlON
-    !implicit none
-    !integer, intent(in) :: lmax
-    !real(8), intent(out) :: p(lmax + 1)
-    !real(8), intent(in) :: z
-    !!f2py depend(lmax) p
+subroutine PlON(p, lmax, z)
+    use shtools, only: PlON_f => PlON
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out) :: p(lmax + 1)
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p
     
-    !call PlON_f(p, lmax, z)
-!end subroutine PlON
+    call PlON_f(p, lmax, z)
+end subroutine PlON
 
 !! Associated Legendre functions
-!subroutine PlmBar(p, lmax, z, csphase, cnorm)
-    !!use shtools, only: PlmBar_f => PlmBar
-    !implicit none
-    !integer, intent(in) :: csphase, cnorm
-    !integer, intent(in) :: lmax
-    !real(8), intent(out) :: p((lmax + 1)*(lmax + 2) / 2)
-    !real(8), intent(in) :: z
-    !!f2py depend(lmax) p
-    !!f2py integer, optional :: csphase=1
-    !!f2py integer, optional :: cnorm=0
+subroutine PlmBar(p, lmax, z, csphase, cnorm)
+    use shtools, only: PlmBar_f => PlmBar
+    implicit none
+    integer, intent(in) :: csphase, cnorm
+    integer, intent(in) :: lmax
+    real(8), intent(out) :: p((lmax + 1)*(lmax + 2) / 2)
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p
+    !f2py integer, optional :: csphase=1
+    !f2py integer, optional :: cnorm=0
 
-    !call PlmBar_f(p, lmax, z, csphase, cnorm)
-!end subroutine PlmBar
+    call PlmBar_f(p, lmax, z, csphase, cnorm)
+end subroutine PlmBar
 
-!subroutine PlmSchmidt(p, lmax, z, csphase, cnorm)
-    !!use shtools, only: PlmSchmidt_f => PlmSchmidt
-    !implicit none
-    !integer, intent(in) :: csphase, cnorm
-    !integer, intent(in) :: lmax
-    !real(8), intent(out) :: p((lmax + 1)*(lmax + 2) / 2)
-    !real(8), intent(in) :: z
-    !!f2py depend(lmax) p
-    !!f2py integer, optional :: csphase=1
-    !!f2py integer, optional :: cnorm=0
+subroutine PlmSchmidt(p, lmax, z, csphase, cnorm)
+    use shtools, only: PlmSchmidt_f => PlmSchmidt
+    implicit none
+    integer, intent(in) :: csphase, cnorm
+    integer, intent(in) :: lmax
+    real(8), intent(out) :: p((lmax + 1)*(lmax + 2) / 2)
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p
+    !f2py integer, optional :: csphase=1
+    !f2py integer, optional :: cnorm=0
 
-    !call PlmSchmidt_f(p, lmax, z, csphase, cnorm)
-!end subroutine PlmSchmidt
+    call PlmSchmidt_f(p, lmax, z, csphase, cnorm)
+end subroutine PlmSchmidt
 
-!subroutine PlmON(p, lmax, z, csphase, cnorm)
-    !!use shtools, only: PlmON_f => PlmON
-    !implicit none
-    !integer, intent(in) :: csphase, cnorm
-    !integer, intent(in) :: lmax
-    !real(8), intent(out) :: p((lmax + 1)*(lmax + 2) / 2)
-    !real(8), intent(in) :: z
-    !!f2py depend(lmax) p
-    !!f2py integer, optional :: csphase=1
-    !!f2py integer, optional :: cnorm=0
+subroutine PlmON(p, lmax, z, csphase, cnorm)
+    use shtools, only: PlmON_f => PlmON
+    implicit none
+    integer, intent(in) :: csphase, cnorm
+    integer, intent(in) :: lmax
+    real(8), intent(out) :: p((lmax + 1)*(lmax + 2) / 2)
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p
+    !f2py integer, optional :: csphase=1
+    !f2py integer, optional :: cnorm=0
 
-    !call PlmON_f(p, lmax, z, csphase, cnorm)
-!end subroutine PlmOn
+    call PlmON_f(p, lmax, z, csphase, cnorm)
+end subroutine PlmOn
 
 ! Subroutines written by me, for me)
 !subroutine ylm(y, lmax, theta, phi)

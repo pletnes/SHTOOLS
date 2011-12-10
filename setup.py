@@ -120,7 +120,19 @@ f90_src_files = [
         'src/YilmIndex.f90',
         'src/pyshtools.f90',
         'src/PLegendre.f90',
+        'src/PlBar.f90',
+        'src/PlSchmidt.f90',
+        'src/PlON.f90',
+        'src/PlmBar.f90',
+        'src/PlmSchmidt.f90',
+        'src/PlmON.f90',
         ]
+
+# Recipe for adding another subroutine:
+# 1) Add source file to setup.py to compile the routine
+# 2) Add wrapper routine to pyshtools.f90 to make a nice pythonic interface
+# 3) Add import statement in pySHTOOLS/__init__.py to make it visible
+# 4) Add test in the testing file
 
 def configuration(parent_package='', top_path=None):
     from numpy.distutils.misc_util import Configuration
