@@ -34,7 +34,7 @@ function YilmIndex(i, l, m)
     YilmIndex = YilmIndex_f(i, l, m) - 1
 end function YilmIndex
 
-!! Legendre functions
+! Legendre functions
 subroutine PLegendre(p, lmax, z)
     use shtools, only: PLegendre_f => PLegendre
     implicit none
@@ -45,7 +45,6 @@ subroutine PLegendre(p, lmax, z)
 
     call PLegendre_f(p, lmax, z)
 end subroutine PLegendre
-
 
 subroutine PlBar(p, lmax, z)
     use shtools, only: PlBar_f => PlBar
@@ -80,7 +79,42 @@ subroutine PlON(p, lmax, z)
     call PlON_f(p, lmax, z)
 end subroutine PlON
 
-!! Associated Legendre functions
+! Legendre functions with derivatives
+
+subroutine PlBar_d1(p, dp, lmax, z)
+    use shtools, only: PlBar_d1_f => PlBar_d1
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out), dimension(lmax + 1) :: p, dp
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p, dp
+
+    call PlBar_d1_f(p, dp, lmax, z)
+end subroutine PlBar_d1
+
+subroutine PlON_d1(p, dp, lmax, z)
+    use shtools, only: PlON_d1_f => PlON_d1
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out), dimension(lmax + 1) :: p, dp
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p, dp
+
+    call PlON_d1_f(p, dp, lmax, z)
+end subroutine PlON_d1
+
+subroutine PlSchmidt_d1(p, dp, lmax, z)
+    use shtools, only: PlSchmidt_d1_f => PlSchmidt_d1
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out), dimension(lmax + 1) :: p, dp
+    real(8), intent(in) :: z
+    !f2py depend(lmax) p, dp
+
+    call PlSchmidt_d1_f(p, dp, lmax, z)
+end subroutine PlSchmidt_d1
+
+! Associated Legendre functions
 subroutine PlmBar(p, lmax, z, csphase, cnorm)
     use shtools, only: PlmBar_f => PlmBar
     implicit none
@@ -112,16 +146,37 @@ end subroutine PlmSchmidt
 subroutine PlmON(p, lmax, z, csphase, cnorm)
     use shtools, only: PlmON_f => PlmON
     implicit none
-    integer, intent(in) :: csphase, cnorm
     integer, intent(in) :: lmax
     real(8), intent(out) :: p((lmax + 1)*(lmax + 2) / 2)
     real(8), intent(in) :: z
+    integer, intent(in) :: csphase, cnorm
     !f2py depend(lmax) p
     !f2py integer, optional :: csphase=1
     !f2py integer, optional :: cnorm=0
 
     call PlmON_f(p, lmax, z, csphase, cnorm)
 end subroutine PlmOn
+
+! Associated Legendre functions with derivatives
+subroutine PLegendreA_d1(p, dp, lmax, z, csphase)
+    use shtools, only: PLegendreA_d1_f => PLegendreA_d1
+    implicit none
+    integer, intent(in) :: lmax
+    real(8), intent(out), dimension((lmax + 1)*(lmax + 2) / 2) :: p, dp
+    !real(8), intent(out), dimension((lmax + 1)*(lmax + 2) / 2) :: dp
+    real(8), intent(in) :: z
+    integer, intent(in) :: csphase
+    !f2py depend(lmax) p
+    !f2py depend(lmax) dp
+    !f2py integer, optional :: csphase=1
+
+    call PLegendreA_d1_f(p, dp, lmax, z, csphase)
+end subroutine PLegendreA_d1
+!PlmBar_d1.f90
+!PlmON_d1.f90
+!PlmSchmidt_d1.f90
+
+
 
 ! Subroutines written by me, for me)
 !subroutine ylm(y, lmax, theta, phi)

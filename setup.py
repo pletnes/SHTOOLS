@@ -126,7 +126,15 @@ f90_src_files = [
         'src/PlmBar.f90',
         'src/PlmSchmidt.f90',
         'src/PlmON.f90',
-        ]
+        'src/PLegendreA_d1.f90',
+        'src/PlBar_d1.f90',
+        'src/PlON_d1.f90',
+        'src/PlSchmidt_d1.f90',
+        #'src/PlmBar_d1.f90',
+        #'src/PlmON_d1.f90',
+        #'src/PlmSchmidt_d1.f90',
+        ] 
+
 
 # Recipe for adding another subroutine:
 # 1) Add source file to setup.py to compile the routine
